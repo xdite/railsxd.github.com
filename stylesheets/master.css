@@ -25,11 +25,18 @@ a:visited {
 }
 
 /* line 15, ../src/master.scss */
+ol {
+  display: block;
+  list-style-type: decimal;
+  padding-left: 40px;
+}
+
+/* line 21, ../src/master.scss */
 .more {
   font-size: 0.7em;
 }
 
-/* line 18, ../src/master.scss */
+/* line 24, ../src/master.scss */
 #container {
   width: 60em;
   margin: 2em auto 0;
@@ -40,7 +47,7 @@ a:visited {
   border-radius: 1.5em;
 }
 
-/* line 28, ../src/master.scss */
+/* line 34, ../src/master.scss */
 #header {
   text-align: left;
   background: #171717;
@@ -53,7 +60,7 @@ a:visited {
   padding: 1.5em;
   text-align: center;
 }
-/* line 39, ../src/master.scss */
+/* line 45, ../src/master.scss */
 #header h1 {
   font-size: 4em;
   display: inline;
@@ -61,33 +68,33 @@ a:visited {
   color: #fff;
   font-weight: normal;
 }
-/* line 45, ../src/master.scss */
+/* line 51, ../src/master.scss */
 #header h1 a {
   color: inherit;
   text-decoration: none;
 }
-/* line 48, ../src/master.scss */
+/* line 54, ../src/master.scss */
 #header h1:hover {
   text-decoration: underline;
 }
-/* line 50, ../src/master.scss */
+/* line 56, ../src/master.scss */
 #header h2 {
   display: inline;
   margin-left: 0.5em;
   font-size: 2em;
   font-weight: normal;
 }
-/* line 51, ../src/master.scss */
+/* line 57, ../src/master.scss */
 #header h2 a {
   color: #BF7F30;
   text-decoration: none;
 }
-/* line 54, ../src/master.scss */
+/* line 60, ../src/master.scss */
 #header h2 a:hover {
   text-decoration: underline;
 }
 
-/* line 67, ../src/master.scss */
+/* line 73, ../src/master.scss */
 #content {
   padding: 2em;
   background: #E6E0D8;
@@ -99,13 +106,13 @@ a:visited {
   border-bottom-right-radius: 1em;
 }
 
-/* line 80, ../src/master.scss */
+/* line 86, ../src/master.scss */
 #main {
   float: left;
   width: 40em;
 }
 
-/* line 86, ../src/master.scss */
+/* line 92, ../src/master.scss */
 #sidebar {
   margin-left: 1em;
   background: #E6E0D8;
@@ -113,14 +120,14 @@ a:visited {
   width: 15em;
 }
 
-/* line 95, ../src/master.scss */
+/* line 101, ../src/master.scss */
 .post h1 {
   margin-top: 0.2em;
   margin-bottom: 0.67em;
   font-size: 2em;
   display: block;
 }
-/* line 100, ../src/master.scss */
+/* line 106, ../src/master.scss */
 .post h1 a {
   color: inherit;
   text-decoration: none;
@@ -132,35 +139,36 @@ a:visited {
   border-bottom: 1px dashed #dba;
   font-weight: bold;
 }
-/* line 112, ../src/master.scss */
+/* line 118, ../src/master.scss */
 .post h2 {
+  font-size: 1.5em;
   margin-top: 0.83em;
   margin-bottom: 0.83em;
 }
-/* line 118, ../src/master.scss */
+/* line 125, ../src/master.scss */
 .post h3 {
   font-size: 1.17em;
   margin-top: 1em;
   margin-bottom: 1em;
 }
-/* line 124, ../src/master.scss */
+/* line 131, ../src/master.scss */
 .post ul {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-/* line 127, ../src/master.scss */
+/* line 134, ../src/master.scss */
 .post ul li {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-/* line 133, ../src/master.scss */
+/* line 140, ../src/master.scss */
 .post p {
   margin-top: 1em;
   margin-bottom: 1em;
   line-height: 140%;
   letter-spacing: -0.03em;
 }
-/* line 139, ../src/master.scss */
+/* line 146, ../src/master.scss */
 .post .date {
   padding: 0.4em 0.6em 0.3em;
   font-weight: bold;
@@ -169,7 +177,7 @@ a:visited {
   color: #000;
 }
 
-/* line 148, ../src/master.scss */
+/* line 155, ../src/master.scss */
 .title {
   background: #171717;
   padding: 0.3em 0.5em;
@@ -178,12 +186,12 @@ a:visited {
   color: white;
   font-size: 1.5em;
 }
-/* line 154, ../src/master.scss */
+/* line 161, ../src/master.scss */
 .title a {
   color: inherit;
 }
 
-/* line 158, ../src/master.scss */
+/* line 165, ../src/master.scss */
 pre {
   background: #f8f8f8;
   border: 1px solid #E7E5DC;
@@ -198,7 +206,7 @@ pre {
   margin: 1em 0px;
 }
 
-/* line 172, ../src/master.scss */
+/* line 179, ../src/master.scss */
 .topic {
   background: #FAD8AF;
   border: 2px solid #B89F80;
@@ -210,11 +218,11 @@ pre {
   -webkit-border-radius: 0.5em;
   border-radius: 0.5em;
 }
-/* line 182, ../src/master.scss */
+/* line 189, ../src/master.scss */
 .topic h3 {
   margin: 0 0 0.3em 0;
 }
-/* line 184, ../src/master.scss */
+/* line 191, ../src/master.scss */
 .topic h3 a {
   font-weight: bold;
   color: black;
@@ -222,7 +230,7 @@ pre {
   font-size: 1.1em;
 }
 
-/* line 193, ../src/master.scss */
+/* line 200, ../src/master.scss */
 #footer {
   margin: 0 auto 2em;
   color: #3E423A;
@@ -231,7 +239,7 @@ pre {
   text-align: center;
   width: 56em;
 }
-/* line 200, ../src/master.scss */
+/* line 207, ../src/master.scss */
 #footer a {
   color: #3E423A;
   font-weight: normal;

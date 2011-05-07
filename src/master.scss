@@ -12,6 +12,12 @@ a {
   &:visited {color: #6C6E58; } 
 }
 
+ol {
+   display: block;
+   list-style-type: decimal;
+   padding-left: 40px;
+}
+
 .more {
   font-size: 0.7em; }
     
@@ -110,6 +116,7 @@ a {
       }
    }
    h2{
+      font-size: 1.5em;
       margin-top: 0.83em;
       margin-bottom: 0.83em;
 
