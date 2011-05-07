@@ -160,8 +160,16 @@ a:visited {
   line-height: 140%;
   letter-spacing: -0.03em;
 }
+/* line 139, ../src/master.scss */
+.post .date {
+  padding: 0.4em 0.6em 0.3em;
+  font-weight: bold;
+  color: white;
+  text-align: right;
+  color: #000;
+}
 
-/* line 141, ../src/master.scss */
+/* line 148, ../src/master.scss */
 .title {
   background: #171717;
   padding: 0.3em 0.5em;
@@ -170,12 +178,12 @@ a:visited {
   color: white;
   font-size: 1.5em;
 }
-/* line 147, ../src/master.scss */
+/* line 154, ../src/master.scss */
 .title a {
   color: inherit;
 }
 
-/* line 151, ../src/master.scss */
+/* line 158, ../src/master.scss */
 pre {
   background: #f8f8f8;
   border: 1px solid #E7E5DC;
@@ -190,7 +198,7 @@ pre {
   margin: 1em 0px;
 }
 
-/* line 165, ../src/master.scss */
+/* line 172, ../src/master.scss */
 .topic {
   background: #FAD8AF;
   border: 2px solid #B89F80;
@@ -202,11 +210,11 @@ pre {
   -webkit-border-radius: 0.5em;
   border-radius: 0.5em;
 }
-/* line 175, ../src/master.scss */
+/* line 182, ../src/master.scss */
 .topic h3 {
   margin: 0 0 0.3em 0;
 }
-/* line 177, ../src/master.scss */
+/* line 184, ../src/master.scss */
 .topic h3 a {
   font-weight: bold;
   color: black;
@@ -214,7 +222,7 @@ pre {
   font-size: 1.1em;
 }
 
-/* line 186, ../src/master.scss */
+/* line 193, ../src/master.scss */
 #footer {
   margin: 0 auto 2em;
   color: #3E423A;
@@ -223,7 +231,7 @@ pre {
   text-align: center;
   width: 56em;
 }
-/* line 193, ../src/master.scss */
+/* line 200, ../src/master.scss */
 #footer a {
   color: #3E423A;
   font-weight: normal;
