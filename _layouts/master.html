@@ -1,37 +1,26 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-  "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html>
-  <head>
+<head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title> Pragmatic Rails - {{ page.title }}</title>
+    <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
     <link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8"/>
     <link rel="alternate" type="application/atom+xml" href="/atom.xml" />
-  </head>
-  <body>
-    <div id='wrapper'>
-      <div id='header'>
-        <h1><a href="/">
-        		Pragmatic Rails
-        </a></h1>
-        <h2><a href="http://blog.xdite.net">by xdite</a></h2>
-      </div>
-      <div id='content'>
-        {{ content }}
-        <div class='clearfix'></div>
-      </div>
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">Pragmatic Rails</a></h1>
+      <h2><a href="http://blog.xdite.net">by xdite</a></h2>
+    </div>    
+    <div id="content">
+      {{ content }}
     </div>
-    <div id='footer'>
-      Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons</a>. Theme and code inspired by <a href="http://github.com/mbleigh">Michael Bleigh</a>. Hosted by <a href='http://github.com/xdite/railsxd.github.com/' target='_blank'>GitHub</a> and powered by <a href='http://github.com/mojombo/jekyll'>Jekyll</a>.
-    </div>
-  <script type="text/javascript">
-  var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-  document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-  </script>
-  <script type="text/javascript">
-  try {
-  var pageTracker = _gat._getTracker("UA-8889441-1");
-  pageTracker._trackPageview();
-  } catch(err) {}</script>
-  </body>
+    
+  </div>
+  <div id="footer">
+    Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons</a>. Theme and code inspired by <a href="http://github.com/mbleigh">Michael Bleigh</a>. Powered by <a href='http://github.com/mojombo/jekyll'>Jekyll</a>.
+  </div>
+</body>
 </html>

@@ -3,11 +3,11 @@ title: Best Practice of Installing Ruby on Rails on clean Mac
 layout: post
 ---
 
-h1.  MacBook 裝機步驟 
+h2.  MacBook 裝機步驟 
 
 *警告: 請絕對不要跳著裝！*
 
-h2. 系統套件
+h3. 系統套件
 
 * Software Update
 * Install Xcode ( Mac OS X Install CD 那一塊的 >> 選擇安裝）
@@ -20,7 +20,7 @@ h2. 系統套件
 * brew update
 
 
-h2. Imagemagick / MYSQL / Sphinx
+h3. Imagemagick / MYSQL / Sphinx
 
 安裝 Imagemagick
 * brew install imagemagick
@@ -49,7 +49,7 @@ launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist
 安裝 Sphinx
 * brew install sphinx
 
-h2. 安裝 RVM 與 REE
+h3. 安裝 RVM 與 REE
 
 安裝 RVM 
 
@@ -70,7 +70,7 @@ h2. 安裝 RVM 與 REE
 </pre>
 *(WARNING: 使用 RVM 安裝 gem 和 passenger-install-apache2-module 不需要加上 sudo , 因為使用 sudo 會使用非 RVM 的 ruby 環境, 安裝目錄也不一樣.)*
 
-h2. 安裝必要 Ruby gems
+h3. 安裝必要 Ruby gems
 
 <pre>
 
@@ -90,7 +90,7 @@ gem install sphinx
 </pre>
 
 
-h2. 設定 HTTP Server
+h3. 設定 HTTP Server
 
 * 系統偏好設定 -> 共享 -> 網頁共享 打勾
 

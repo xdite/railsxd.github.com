@@ -129,6 +129,13 @@ a {
          margin-bottom: 1em;
       }
    }
+   
+    p {
+     margin-top: 1em;
+     margin-bottom: 1em;
+     line-height: 140%;
+     letter-spacing: -0.03em;
+   }
 }
 
 .title {
@@ -174,6 +181,19 @@ pre {
         font-size: 1.1em;
       }
   }  
+}
+
+#footer {
+  margin: 0 auto 2em;
+  color: #3E423A;
+  font-size: 0.9em;
+  padding: 0.5em 0;
+  text-align: center;
+  width: 56em;
+  a {
+    color: #3E423A;
+    font-weight: normal;
+  }
 }
 
 
