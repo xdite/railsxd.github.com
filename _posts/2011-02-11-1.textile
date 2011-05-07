@@ -1,0 +1,127 @@
+--- 
+title: Best Practice of Installing Ruby on Rails on clean Mac
+layout: post
+---
+
+h1.  MacBook 裝機步驟 
+
+*警告: 請絕對不要跳著裝！*
+
+h2. 系統套件
+
+* Software Update
+* Install Xcode ( Mac OS X Install CD 那一塊的 >> 選擇安裝）
+
+* Install Homebrew http://github.com/mxcl/homebrew
+<pre>ruby -e "$(curl -fsS https://gist.github.com/raw/323731/install_homebrew.rb)"</pre>
+
+
+* brew install git
+* brew update
+
+
+h2. Imagemagick / MYSQL / Sphinx
+
+安裝 Imagemagick
+* brew install imagemagick
+
+安裝 MySQL
+* brew install mysql
+
+請注意以下指令 MySQL 版號，請自行更正
+
+<pre>
+unset TMPDIR
+mysql_install_db
+cp /usr/local/Cellar/mysql/5.1.54/com.mysql.mysqld.plist ~/Library/LaunchAgents
+launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist
+/usr/local/Cellar/mysql/5.1.54/bin/mysql_secure_installation
+</pre>
+
+*Set root password? [Y/n] Y*
+*New password: 123456*
+*Re-enter new password: 123456*
+*Remove anonymous users? [Y/n] Y*
+*Disallow root login remotely? [Y/n] Y*
+*Remove test database and access to it? [Y/n] Y*
+*Reload privilege tables now? [Y/n] Y*
+
+安裝 Sphinx
+* brew install sphinx
+
+h2. 安裝 RVM 與 REE
+
+安裝 RVM 
+
+<pre>
+  bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+  echo "[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm" >> ~/.profile && . ~/.profile
+  source ~/.profile
+</pre>
+
+* rvm install ree
+* rvm ree --default
+
+*解決使用 rvm 裝 ree 後，不能在 irb 打中文的問題*
+<pre>
+  brew install readline
+  brew link readline
+  rvm --reconfigure --force -C --with-readline-dir=/usr/local install ree
+</pre>
+*(WARNING: 使用 RVM 安裝 gem 和 passenger-install-apache2-module 不需要加上 sudo , 因為使用 sudo 會使用非 RVM 的 ruby 環境, 安裝目錄也不一樣.)*
+
+h2. 安裝必要 Ruby gems
+
+<pre>
+
+gem install rails
+gem install rails -v=2.3.8
+gem install mysql2
+gem install mysql
+gem install passenger
+gem install nokogiri
+gem install capistrano
+gem install capistrano-ext
+gem install delayed_job
+gem install hoptoad_notifier
+gem install facebooker2
+gem install factory_girl
+gem install sphinx
+</pre>
+
+
+h2. 設定 HTTP Server
+
+* 系統偏好設定 -> 共享 -> 網頁共享 打勾
+
+* passenger-install-apache2-module
+
+編輯 Apache config
+
+* sudo vim /etc/apache2/httpd.conf 
+
+貼到 php5_module 的上面
+
+<pre>
+LoadModule passenger_module /Users/xdite/.rvm/gems/ree-1.8.7-2011.01/gems/passenger-3.0.2/ext/apache2/mod_passenger.so
+PassengerRoot /Users/xdite/.rvm/gems/ree-1.8.7-2011.01/gems/passenger-3.0.2
+PassengerRuby /Users/xdite/.rvm/wrappers/ree-1.8.7-2011.01/ruby
+</pre>
+
+把 vhost Include前面註解打開
+
+<pre>
+# Virtual hosts
+Include /private/etc/apache2/extra/httpd-vhosts.conf
+</pre>
+
+sudo apachectl restart
+
+10.6.5 之後可能需要修改 sudo vim /usr/sbin/apachectl Line 64: 為
+<pre>
+ULIMIT_MAX_FILES="
+</pre>
+
+*本機 webroot 目錄 是在*
+
+/Library/WebServer/Documents/
