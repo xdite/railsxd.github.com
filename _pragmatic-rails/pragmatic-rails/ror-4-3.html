@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title> Pragmatic Rails - 深入淺出 RoR (4-3) - RESTful 與 CRUD action</title>
+     <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
+    <link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8"/>
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">Pragmatic Rails</a></h1>
+      <h2><a href="http://blog.xdite.net">by xdite</a></h2>
+    </div>    
+    <div id="content">
+      <div class='post'>
+  <h1><a href='/ror-4-3.html'>深入淺出 RoR (4-3) - RESTful 與 CRUD action</a></h1>
+  <div class='date'>posted 01 Nov 2010</div>
+  <div class='body'><p>Rails 1.2 引進了 REST 觀念。而在 Rails 2.0 ，RESTful 更成為這個版本的主要重點之一。</p>
+
+<p>如果你對 <a href='http://devpoga.wordpress.com/2008/02/17/restful-rails-%E7%B0%A1%E5%96%AE%E5%BF%83%E5%BE%97/'>RESTful Rails</a> 不甚了解，推薦 RESTful Rails 簡單心得 這篇文章當入門磚。而希望深入了解的可以閱讀 ihower 的 <a href='http://ihower.idv.tw/blog/archives/1542'>什麼是 REST跟RESTful?</a> 。不過我傾向建議你看完這篇文章再去啃這兩篇。</p>
+<pre>
+    ActionController::Routing::Routes.draw do |map|
+        map.resources :blogs
+    end
+</pre>
+<p>在 config/routes.rb 加入上面那一行，就是具體在 rails 實作 RESTful 支援的方式。</p>
+
+<p>這樣的宣告將在自動對應 URL路徑跟 Controller 的 action ，而有以下的結果 :</p>
+<pre>
+    GET: /blogs => [:action => 'index']
+    GET: /blogs.xml => [:action => 'index', :format => 'xml']
+    GET: /blogs/1 => [:action => 'show', :id => 1]
+    GET: /blogs/1/edit => [:action => 'edit', :id => 1]
+    GET: /blogs/1.xml => [:action => 'show', :id => 1, :format => 'xml']
+    POST: /blogs => [:action => 'create']
+    PUT: /blogs/1 => [:action => 'update', :id => 1]
+    DELETE: /blogs/1 => [:action => 'destroy', :id => 1]
+</pre>
+<p>也就是使用 named routes 來實作出 verb-oriented controllers，單一個 resource 根據 HTTP verb 而有不同的行為。</p>
+
+<p>除了產生對應 routes 的 action 給 Controller，最方便的是自動產生了一些 helpers 給 views。</p>
+<table>
+<tbody>
+<tr>
+<th>helpers</th><th>HTTP Verb</th><th>產生的Path</th><th>對應的Action</th>
+</tr>
+<tr>
+<td>blogs_path</td>
+<td>GET</td>
+<td>/blogs</td>
+<td>index</td>
+</tr>
+<tr>
+<td>blog_path(id)</td>
+<td>GET</td>
+<td>/blogs/1</td>
+<td>show</td>
+</tr>
+<tr>
+<td>new_blog_path</td>
+<td>GET</td>
+<td>/blogs/new</td>
+<td>new</td>
+</tr>
+<tr>
+<td>blogs_path</td>
+<td>POST</td>
+<td>/blogs</td>
+<td>create</td>
+</tr>
+<tr>
+<td>edit_blog_path(id)</td>
+<td>GET</td>
+<td>/blogs/1/edit</td>
+<td>edit</td>
+</tr>
+<tr>
+<td>bloh_path(id)</td>
+<td>PUT</td>
+<td>/blogs/1</td>
+<td>
+<p>update</p>
+</td>
+</tr>
+<tr>
+<td>blog_path(id)</td>
+<td>DELETE</td>
+<td>/blogs/1</td>
+<td>destroy</td>
+</tr>
+</tbody>
+</table>
+<p>相信這一些解說能大致讓你對 blogs_controller 或 view 裡的一些 path 有一些粗淺的了解。</p>
+
+<p>verb-oriented 有什麼好處呢？最明顯的好處就是在 Rails 1.1 中需要花上很多功夫刻的 action code，在 Rails 2.x 中大部分都可以藉由 htttp verb 作掉。</p>
+
+<p>本篇文章接下來對 controller 的 action 作一點簡單的解說。</p>
+
+<p><strong>index</strong> 是拉列表的動作。因此 Post.all 是拉出 Post 這個 model 所有的資料。 <pre>
+    def index
+      @posts = Post.find(:all)
+    end
+</pre></p>
+
+<p><strong>show</strong> 秀出單筆資料。 Post.find(123) 是指找 Post model 裡 id 為 123 的資料。http://demosite.com/blogs/show/123 的 blogs 是 controller、show 是 action；如果在 route 裡面沒有特別指定，則 123 通常就是 params<code>[</code>:id<code>]</code> 。 <pre>
+    def show
+      @post = Post.find(params`[`:id`]`)
+    end
+</pre></p>
+
+<p><strong>new</strong> 應該不必多說，就是 initial 一個 Post 的新 object。 def new @post = Post.new end</p>
+
+<p><strong>edit</strong> 這邊跟 show 相同的作法，是拉出 Post model 裡指定的 object ，只是資料拉出來，編輯。 <pre>
+    def edit
+      @post = Post.find(params`[`:id`]`)
+    end
+</pre></p>
+
+<p><strong>create</strong> 這邊我們要翻回 app/views/blogs/new.html.erb 這個 view 並列一起來看。 <pre>
+    def create
+      @post = Post.new(params`[`:post`]`)
+      if @post.save
+        flash[:notice] = 'Post was successfully created.'
+        redirect_to blog_path(@post)
+      else
+        render :action => "new"
+      end
+    end
+</pre></p>
+
+<pre><code>&lt;h1&gt;New post&lt;/h1&gt;
+
+&lt;% form_for :post , :url =&gt; blogs_path do |f| -%&gt;
+    &lt;%= f.error_messages %&gt;
+    &lt;div&gt;&lt;label&gt;subject&lt;/label&gt;&lt;%= f.text_field :subject %&gt;&lt;/div&gt;
+    &lt;div&gt;&lt;label&gt;content&lt;/label&gt;&lt;%= f.text_area :content %&gt; &lt;/div&gt;
+    &lt;%= f.submit &quot;Submit&quot;, :disable_with =&gt; &#39;Submiting...&#39; %&gt;
+&lt;% end -%&gt;
+
+
+&lt;%= link_to &#39;Back&#39;, blogs_path %&gt;</code></pre>
+
+<p>在 RESTful Rails 的寫法中，對 blogs_path （就是 index action ）丟 POST 就是對應到 create 的動作。而 Rails 在設計上，form 是綁 model 的，因此整個 form 的內容會被包成一個 hash，在這裡就是 params<code>[</code>:post<code>]</code>。create action 初始一個 object ，並把 params<code>[</code>:post<code>]</code> 整包塞進這個 object 裡。如果 @post 能夠成功的儲存，就「重導」到 index action ，失敗則「退回」到 new action 。</p>
+
+<p><strong>update</strong> 這邊我們也要翻回 app/views/blogs/edit.html.erb 這個 view 一起來看。</p>
+<pre>
+    def update
+      @post = Post.find(params`[`:id`]`)
+      if @post.update_attributes(params`[`:post`]`)
+       flash[:notice] = 'Post was successfully updated.'
+       redirect_to blog_path(@post)
+      else
+        format.html { render :action => "edit" }
+      end
+    end
+</pre>
+<pre><code>&lt;h1&gt;Editing post&lt;/h1&gt;
+&lt;% form_for :post , :url =&gt; blog_path(@post) , :html =&gt; {:method =&gt; :put} do |f| -%&gt;
+    &lt;%= f.error_messages %&gt;
+    &lt;div&gt;&lt;%= f.text_field :subject %&gt;
+    &lt;div&gt;&lt;%= f.text_area :content %&gt;&lt;/div&gt;
+    &lt;%= f.submit &quot;Submit&quot;, :disable_with =&gt; &#39;Submiting...&#39; %&gt;
+&lt;% end -%&gt;
+
+&lt;%= link_to &#39;Show&#39;, blog_path(blog) %&gt; |
+&lt;%= link_to &#39;Back&#39;, blogss_path %&gt;</code></pre>
+
+<p>在 RESTful Rails 的寫法中，對 blog_path （就是 show action ）丟 PUT 就是對應到 update 的動作。form 會背包成一個 hash，如果 @post 能夠吃進 params<code>[</code>:post<code>]</code> 進行更新且成功儲存，就會「重導」到 show action，失敗則「退回」到 edit action。</p>
+
+<p><strong>delete</strong> 找到該筆資料並刪除之。在 RESTful Rails 的寫法中，對 blog_path(就是 show action) 丟 DELETE 對應到 destroy 的動作。可看一下 link_to &#8220;Destroy&#8221; 那一行。</p>
+
+<pre><code>&lt;h1&gt;My Blog&lt;/h1&gt;
+&lt;h2&gt;&lt;%= link_to &#39;New post&#39;, new_blog_path %&gt;&lt;/h2&gt;
+&lt;table&gt;
+  &lt;tr&gt;
+  &lt;/tr&gt;
+
+&lt;% for post in @posts %&gt;
+  &lt;tr&gt;
+    &lt;td&gt;&lt;%= post.subject %&gt; &lt;/td&gt;
+    &lt;td&gt;&lt;%= link_to &#39;Show&#39;, blog_path(post) %&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;%= link_to &#39;Edit&#39;, edit_blog_path(post) %&gt;&lt;/td&gt;
+    &lt;td&gt;&lt;%= link_to &#39;Destroy&#39;,  blog_path(post), :confirm =&gt; &#39;Are you sure?&#39;, :method =&gt; :delete %&gt;&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;% end %&gt;
+&lt;/table&gt;</code></pre>
+<hr />
+<p>看到這個段落，我想應該能讓你對 RESTful Rails 以及 CRUD 中的各種互動有一點粗淺的瞭解。</p></div>
+</div>
+
+    </div>
+    
+  </div>
+  <div id="footer">
+    Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons</a>. Theme and code inspired by <a href="http://github.com/mbleigh">Michael Bleigh</a>. Powered by <a href='http://github.com/mojombo/jekyll'>Jekyll</a>.
+  </div>
+</body>
+</html>

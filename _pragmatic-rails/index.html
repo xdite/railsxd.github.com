@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title> Pragmatic Rails - Home</title>
+     <link rel="stylesheet" href="/stylesheets/reset.css" type="text/css" media="screen" charset="utf-8"/>
+    <link rel="stylesheet" href="/stylesheets/master.css" type="text/css" media="screen" charset="utf-8"/>
+    <link rel="alternate" type="application/atom+xml" href="/atom.xml" />
+</head>
+<body>
+  <div id="container">
+    <div id="header">
+      <h1><a href="/">Pragmatic Rails</a></h1>
+      <h2><a href="http://blog.xdite.net">by xdite</a></h2>
+    </div>    
+    <div id="content">
+      <div id="main">
+   <div class="title">
+     Latest Post
+     <span class="more">(<a href="/archive.html">Archive</a>)</span>
+     <span class="more">(<a href="/howto.html">Howto</a>)</span>
+     <span class="more">(<a href="/atom.xml">Feed</a>)</span>
+   </div>
+   <div class="post">
+     <h1><a href="/install-rails-on-mac.html">Best Practice of Installing Ruby on Rails on clean Mac</a></h1>
+     <div class="body"><h2 id='mac_'>Mac 裝機步驟</h2>
+<div class='warning'>
+警告: 請絕對不要跳著裝！
+</div>
+<h3 id='id54'>系統套件</h3>
+
+<ol>
+<li>
+<p>Software Update</p>
+</li>
+
+<li>
+<p>Install Xcode ( <strong>Mac OS X Install CD 那一塊的</strong>&#160;&#187; <strong>選擇安裝</strong>）</p>
+</li>
+
+<li>
+<p>Install <a href='http://github.com/mxcl/homebrew'>Homebrew</a> <pre>ruby -e "$(curl -fsS https://gist.github.com/raw/323731/install_homebrew.rb)"</pre></p>
+
+<ul>
+<li><code>&gt;</code> brew install git</li>
+
+<li><code>&gt;</code> brew update</li>
+</ul>
+</li>
+</ol>
+
+<h3 id='imagemagick__mysql__sphinx'>Imagemagick / MYSQL / Sphinx</h3>
+
+<ol>
+<li>
+<p>安裝 Imagemagick</p>
+
+<p><code>&gt;</code> brew install imagemagick</p>
+</li>
+
+<li>
+<p>安裝 MySQL</p>
+
+<p><code>&gt;</code> brew install mysql</p>
+
+<p><strong>請注意以下指令 MySQL 版號，請自行更正</strong> <pre>
+ unset TMPDIR
+ mysql_install_db
+ cp /usr/local/Cellar/mysql/5.1.54/com.mysql.mysqld.plist ~/Library/LaunchAgents
+ launchctl load -w ~/Library/LaunchAgents/com.mysql.mysqld.plist
+ /usr/local/Cellar/mysql/5.1.54/bin/mysql_secure_installation
+ </pre></p>
+
+<ul>
+<li>Set root password? <code>[</code>Y/n<code>]</code> <strong>Y</strong></li>
+
+<li>New password: <strong>123456</strong></li>
+
+<li>Re-enter new password: <strong>123456</strong></li>
+
+<li>Remove anonymous users? <code>[</code>Y/n<code>]</code> <strong>Y</strong></li>
+
+<li>Disallow root login remotely? <code>[</code>Y/n<code>]</code> <strong>Y</strong></li>
+
+<li>Remove test database and access to it? <code>[</code>Y/n<code>]</code> <strong>Y</strong></li>
+
+<li>Reload privilege tables now? <code>[</code>Y/n<code>]</code> <strong>Y</strong></li>
+</ul>
+</li>
+
+<li>
+<p>安裝 Sphinx</p>
+
+<p><code>&gt;</code> brew install sphinx</p>
+</li>
+</ol>
+
+<h3 id='_rvm__ree'>安裝 RVM 與 REE</h3>
+
+<ol>
+<li>
+<p>安裝 RVM <pre>
+ bash &lt;&lt;( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+ echo &quot;[[ -s $HOME/.rvm/scripts/rvm ]] &amp;&amp; 
+ source $HOME/.rvm/scripts/rvm&quot; &gt;&gt; ~/.profile &amp;&amp; . ~/.profile
+ source ~/.profile
+ </pre></p>
+
+<p><code>&gt;</code> rvm install ree</p>
+
+<p><code>&gt;</code> rvm ree &#8211;default</p>
+
+<p><strong>解決使用 rvm 裝 ree 後，不能在 irb 打中文的問題</strong> <pre>
+   brew install readline
+   brew link readline
+   rvm --reconfigure --force -C --with-readline-dir=/usr/local install ree
+ </pre></p>
+<div class='info'>
+     <p>
+          使用 RVM 安裝 gem 和 passenger-install-apache2-module 不需要加上 sudo , 因為使用 sudo 會使用非 RVM 的 ruby 環境, 安裝目錄也不一樣.)
+     </p>
+ </div></li>
+</ol>
+
+<h3 id='_ruby_gems'>安裝必要 Ruby gems</h3>
+<pre>
+gem install rails
+gem install rails -v=2.3.8
+gem install mysql2
+gem install mysql
+gem install passenger
+gem install nokogiri
+gem install capistrano
+gem install capistrano-ext
+gem install delayed_job
+gem install hoptoad_notifier
+gem install facebooker2
+gem install factory_girl
+gem install sphinx
+</pre>
+<h3 id='_http_server'>設定 HTTP Server</h3>
+
+<p>請使用 <a href='/todo.html'>Pow</a></p>
+
+<h4 id='todo'>TODO</h4></div>
+   </div>
+</div>
+<div id="sidebar">
+<div class="title">專題</div>
+  <div class="topic">
+  <h3>Install Rails</h3>
+  <span class="desc">
+  	安裝在乾淨的 Mac 上
+  </span>
+</div>
+
+</div>
+
+
+
+    </div>
+    
+  </div>
+  <div id="footer">
+    Licensed under <a href="http://creativecommons.org/licenses/by-sa/3.0/us/">Creative Commons</a>. Theme and code inspired by <a href="http://github.com/mbleigh">Michael Bleigh</a>. Powered by <a href='http://github.com/mojombo/jekyll'>Jekyll</a>.
+  </div>
+</body>
+</html>

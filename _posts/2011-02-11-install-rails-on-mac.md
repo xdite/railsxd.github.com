@@ -5,7 +5,7 @@ layout: post
 
 ## Mac 裝機步驟 ##
 
-<div class="warning">
+<div class="warning" >
 警告: 請絕對不要跳著裝！
 </div>
 

@@ -1,4 +1,4 @@
-/* line 1, ../src/master.scss */
+/* line 2, ../src/master.scss */
 body {
   font-family: Arial, sans-serif;
   background: #607480;
@@ -6,7 +6,7 @@ body {
 }
 
 /* self clear */
-/* line 8, ../src/master.scss */
+/* line 9, ../src/master.scss */
 div:after {
   content: ".";
   display: block;
@@ -15,51 +15,28 @@ div:after {
   visibility: hidden;
 }
 
-/* line 10, ../src/master.scss */
+/* line 11, ../src/master.scss */
 a {
   color: #3E423A;
 }
-/* line 12, ../src/master.scss */
+/* line 13, ../src/master.scss */
 a:visited {
   color: #6C6E58;
 }
 
-/* line 15, ../src/master.scss */
+/* line 16, ../src/master.scss */
 ol {
   display: block;
   list-style-type: decimal;
   padding-left: 40px;
 }
 
-/* line 21, ../src/master.scss */
-table {
-  margin: 0 0 1.5em;
-  border: 2px solid #CCC;
-  background: #FFF;
-  border-collapse: collapse;
-}
-
-/* line 28, ../src/master.scss */
-table th, table td {
-  padding: 0.25em 1em;
-  border: 1px solid #CCC;
-  border-collapse: collapse;
-}
-
-/* line 34, ../src/master.scss */
-table th {
-  border-bottom: 2px solid #CCC;
-  background: #EEE;
-  font-weight: bold;
-  padding: 0.5em 1em;
-}
-
-/* line 42, ../src/master.scss */
+/* line 23, ../src/master.scss */
 .more {
   font-size: 0.7em;
 }
 
-/* line 45, ../src/master.scss */
+/* line 26, ../src/master.scss */
 #container {
   width: 60em;
   margin: 2em auto 0;
@@ -70,7 +47,7 @@ table th {
   border-radius: 1.5em;
 }
 
-/* line 55, ../src/master.scss */
+/* line 36, ../src/master.scss */
 #header {
   text-align: left;
   background: #171717;
@@ -83,7 +60,7 @@ table th {
   padding: 1.5em;
   text-align: center;
 }
-/* line 66, ../src/master.scss */
+/* line 47, ../src/master.scss */
 #header h1 {
   font-size: 4em;
   display: inline;
@@ -91,33 +68,33 @@ table th {
   color: #fff;
   font-weight: normal;
 }
-/* line 72, ../src/master.scss */
+/* line 53, ../src/master.scss */
 #header h1 a {
   color: inherit;
   text-decoration: none;
 }
-/* line 75, ../src/master.scss */
+/* line 56, ../src/master.scss */
 #header h1:hover {
   text-decoration: underline;
 }
-/* line 77, ../src/master.scss */
+/* line 58, ../src/master.scss */
 #header h2 {
   display: inline;
   margin-left: 0.5em;
   font-size: 2em;
   font-weight: normal;
 }
-/* line 78, ../src/master.scss */
+/* line 59, ../src/master.scss */
 #header h2 a {
   color: #BF7F30;
   text-decoration: none;
 }
-/* line 81, ../src/master.scss */
+/* line 62, ../src/master.scss */
 #header h2 a:hover {
   text-decoration: underline;
 }
 
-/* line 94, ../src/master.scss */
+/* line 75, ../src/master.scss */
 #content {
   padding: 2em;
   background: #E6E0D8;
@@ -129,13 +106,13 @@ table th {
   border-bottom-right-radius: 1em;
 }
 
-/* line 107, ../src/master.scss */
+/* line 88, ../src/master.scss */
 #main {
   float: left;
   width: 40em;
 }
 
-/* line 113, ../src/master.scss */
+/* line 94, ../src/master.scss */
 #sidebar {
   margin-left: 1em;
   background: #E6E0D8;
@@ -143,14 +120,14 @@ table th {
   width: 15em;
 }
 
-/* line 122, ../src/master.scss */
+/* line 103, ../src/master.scss */
 .post h1 {
   margin-top: 0.2em;
   margin-bottom: 0.67em;
   font-size: 2em;
   display: block;
 }
-/* line 127, ../src/master.scss */
+/* line 108, ../src/master.scss */
 .post h1 a {
   color: inherit;
   text-decoration: none;
@@ -162,36 +139,36 @@ table th {
   border-bottom: 1px dashed #dba;
   font-weight: bold;
 }
-/* line 139, ../src/master.scss */
+/* line 120, ../src/master.scss */
 .post h2 {
   font-size: 1.5em;
   margin-top: 0.83em;
   margin-bottom: 0.83em;
 }
-/* line 146, ../src/master.scss */
+/* line 127, ../src/master.scss */
 .post h3 {
   font-size: 1.17em;
   margin-top: 1em;
   margin-bottom: 1em;
 }
-/* line 152, ../src/master.scss */
+/* line 133, ../src/master.scss */
 .post ul {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-/* line 155, ../src/master.scss */
+/* line 136, ../src/master.scss */
 .post ul li {
   margin-top: 1em;
   margin-bottom: 1em;
 }
-/* line 161, ../src/master.scss */
+/* line 142, ../src/master.scss */
 .post p {
   margin-top: 1em;
   margin-bottom: 1em;
   line-height: 140%;
   letter-spacing: -0.03em;
 }
-/* line 167, ../src/master.scss */
+/* line 148, ../src/master.scss */
 .post .date {
   padding: 0.4em 0.6em 0.3em;
   font-weight: bold;
@@ -200,7 +177,7 @@ table th {
   color: #000;
 }
 
-/* line 179, ../src/master.scss */
+/* line 160, ../src/master.scss */
 .title {
   background: #171717;
   padding: 0.3em 0.5em;
@@ -209,12 +186,12 @@ table th {
   color: white;
   font-size: 1.5em;
 }
-/* line 185, ../src/master.scss */
+/* line 166, ../src/master.scss */
 .title a {
   color: inherit;
 }
 
-/* line 189, ../src/master.scss */
+/* line 170, ../src/master.scss */
 pre {
   background: #f8f8f8;
   border: 1px solid #E7E5DC;
@@ -229,7 +206,7 @@ pre {
   margin: 1em 0px;
 }
 
-/* line 203, ../src/master.scss */
+/* line 184, ../src/master.scss */
 .topic {
   background: #FAD8AF;
   border: 2px solid #B89F80;
@@ -241,11 +218,11 @@ pre {
   -webkit-border-radius: 0.5em;
   border-radius: 0.5em;
 }
-/* line 213, ../src/master.scss */
+/* line 194, ../src/master.scss */
 .topic h3 {
   margin: 0 0 0.3em 0;
 }
-/* line 215, ../src/master.scss */
+/* line 196, ../src/master.scss */
 .topic h3 a {
   font-weight: bold;
   color: black;
@@ -253,7 +230,7 @@ pre {
   font-size: 1.1em;
 }
 
-/* line 224, ../src/master.scss */
+/* line 205, ../src/master.scss */
 #footer {
   margin: 0 auto 2em;
   color: #3E423A;
@@ -262,13 +239,13 @@ pre {
   text-align: center;
   width: 56em;
 }
-/* line 231, ../src/master.scss */
+/* line 212, ../src/master.scss */
 #footer a {
   color: #3E423A;
   font-weight: normal;
 }
 
-/* line 237, ../src/master.scss */
+/* line 218, ../src/master.scss */
 .warning {
   background: #f9d9d8 url(/stylesheets/images/tab_red.gif) no-repeat left top;
   border: none;
@@ -277,7 +254,7 @@ pre {
   margin-top: 0.25em;
 }
 
-/* line 245, ../src/master.scss */
+/* line 226, ../src/master.scss */
 .info {
   background: #d5e9f6 url(/stylesheets/images/tab_info.gif) no-repeat left top;
   border: none;

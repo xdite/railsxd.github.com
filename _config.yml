@@ -2,5 +2,8 @@ auto: true
 server: true
 permalink: none
 
-source: .
-destination: ./pragmatic-rails
+future:      true
+markdown:    maruku
+
+maruku:
+   use_divs:  true
