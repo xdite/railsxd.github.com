@@ -1,3 +1,4 @@
+@import "compass/utilities/tables/borders";
 body {
    font-family: Arial, sans-serif;
    background: #607480;
@@ -17,6 +18,7 @@ ol {
    list-style-type: decimal;
    padding-left: 40px;
 }
+
 
 .more {
   font-size: 0.7em; }
@@ -150,8 +152,11 @@ ol {
      text-align: right;
      color: #000;
    }
-}
 
+
+
+}
+  
 .title {
    background: #171717;
    padding: 0.3em 0.5em;
@@ -209,5 +214,21 @@ pre {
     font-weight: normal;
   }
 }
+
+.warning{
+    background: #f9d9d8 url(/stylesheets/images/tab_red.gif) no-repeat left top;
+    border: none;
+    padding: 1.25em 1.25em 1.25em 48px;
+    margin-left: 0;
+    margin-top: 0.25em;
+}
+
+.info {
+    background: #d5e9f6 url(/stylesheets/images/tab_info.gif) no-repeat left top;
+    border: none;
+    padding: 1em 1em 0.25em 48px;
+    margin: 0.25em 0 1.5em 0;
+}
+
 
 
